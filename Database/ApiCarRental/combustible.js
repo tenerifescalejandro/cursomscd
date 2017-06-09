@@ -1,11 +1,11 @@
 ﻿$(document).ready(function () {
 
     function GetMarcas() {
-        var urlAPI = 'http://localhost:52673/api/marcas';
+        var urlAPI = 'http://localhost:52673/api/combustible';
 
         $.get(urlAPI, function (respuesta, estado) {
 
-            //console.log(respuesta);
+            console.log(respuesta);
             $('#resultados').html('');
             // COMPRUEBO EL ESTADO DE LA LLAMADA
             if (estado === 'success') {
@@ -28,31 +28,36 @@
     }
 
     $('#btnAddMarca').click(function () {
-        //debugger;
+        debugger;
         var nuevaMarca = $('#txtMarcaDenominacion').val();
-        var urlAPI = 'http://localhost:52673/api/marcas';
-
-        var dataNuevaMarca = {
+        var urlAPI = 'http://localhost:52673/api/combustible';
+        var data = {
             id: 0,
-            denominacion: nuevaMarca
+            denominacion: nuevocombustible
         };
-        //debugger;
-
+        debugger;
         $.ajax({
-            url: urlAPI,
-            type: "POST",
-            dataType: 'json',
-            data: dataNuevaMarca,
-            success: function (respuesta) {
-                //debugger;
-                console.log(respuesta);
-            },
-            error: function (respuesta) {
+            url: urlapi,
+            type: "post",
+            data: JSON.stringify({
+                id: 0,
+                denominacion: nuevocombustible
+            }),
+            //data: {
+            //    id: 0,
+    
+            complete: function (respuesta, estado) {
+                debugger;
                 console.log(respuesta);
             }
         });
+        //$.post(urlAPI, data, function (result) {
+        //    debugger;
+        //    $("span").html(result);
+        //});
+
+
     });
 
-    GetMarcas();
-
+    Getcombustible();
 });

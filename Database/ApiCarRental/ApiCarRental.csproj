@@ -109,8 +109,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="combustible.html" />
+    <Content Include="combustible.js" />
     <Content Include="Global.asax" />
-    <Content Include="Views\addMarca.html" />
+    <Content Include="Marcas.html" />
+    <Content Include="Views\Addmarca.html" />
     <Content Include="Views\js\marcas.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -118,6 +121,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CochesController.cs" />
     <Compile Include="Controllers\MarcasController.cs" />
+    <Compile Include="Controllers\publicIHttpActionResult.cs" />
     <Compile Include="Controllers\TiposCombustiblesController.cs" />
     <Compile Include="DB\Db.cs" />
     <Compile Include="Global.asax.cs">

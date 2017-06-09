@@ -62,6 +62,11 @@ namespace ApiCarRental
             }
         }
 
+        internal static void conectar()
+        {
+            throw new NotImplementedException();
+        }
+
         public static bool EstaLaConexionAbierta()
         {
             return conexion.State == ConnectionState.Open;
@@ -420,6 +425,27 @@ namespace ApiCarRental
 
 
             return resultados;
+        }
+
+        public static int AgregarMarca(Marca marca)
+        {
+
+            string procedimiento = "dbo.AgregarMarca";
+
+            SqlCommand comando = new SqlCommand(procedimiento, conexion);
+            SqlParameter parametro = new SqlParameter();
+            parametro.ParameterName = "denominacion";
+            parametro.SqlDbType = SqlDbType.NVarChar;
+            parametro.SqlValue = marca.denominacion;
+
+            comando.Parameters.Add(parametro);
+            int filasAfectadas = comando.ExecuteNonQuery();
+
+
+
+
+            return 0;
+
         }
     }
 }

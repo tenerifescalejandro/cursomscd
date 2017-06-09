@@ -74,3 +74,20 @@ AS
 BEGIN
 	SELECT id, denominacion FROM Marcas
 END
+
+-- PROCEDIMIENTO PARA INSERTAR UNA NUEVA MARCA
+CREATE PROCEDURE AgregarMarca
+@denominacion nvarchar (50)
+AS
+BEGIN
+	insert into Marcas (denominacion) VALUES (@denominacion)
+END
+
+-- PROCEDIMIENTO PARA INSERTAR UN NUEVO TIPO DE COMBUSTIBLE 
+
+CREATE PROCEDURE AgregarTipoDeCombustible
+@denominacion nvarchar (50)
+AS
+BEGIN
+ insert into TiposCombustible (denominacion) VALUES (@denominacion)
+END

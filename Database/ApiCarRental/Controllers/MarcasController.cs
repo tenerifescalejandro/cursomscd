@@ -9,6 +9,8 @@ namespace ApiCarRental.Controllers
 {
     public class MarcasController : ApiController
     {
+        private int filasAfectadas;
+
         // GET: api/Marcas
         public RespuestaAPI Get()
         {
@@ -60,11 +62,33 @@ namespace ApiCarRental.Controllers
             resultado.dataMarcas = listaMarcas;
             return resultado;
         }
-
         // POST: api/Marcas
-        public void Post([FromBody]string value)
+        [HttpPost]
+        public IHttpActionResult Post([FromBody] Marca marca)
         {
-            string a = value;
+            RespuestaAPI respuesta = new RespuestaAPI();
+            respuesta.error = "";
+            int filasAfectadas = 0;
+            try
+            {
+                Db.Conectar();
+
+                if (Db.EstaLaConexionAbierta())
+                {
+                    filasAfectadas = Db.AgregarMarca(marca);
+                }
+
+                respuesta.totalElementos = filasAfectadas;
+
+                Db.Desconectar();
+            }
+            catch (Exception ex)
+            {
+                respuesta.totalElementos = 0;
+                respuesta.error = "Error al agregar la marca";
+            }
+
+            return Ok(respuesta);
         }
 
         // PUT: api/Marcas/5
